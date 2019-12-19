@@ -13,8 +13,12 @@ public class TestCases {
 		boolean actual = false;
 		try {
 			driver = new DriverSupplier().getChromeDriver();
+			
+			driver.get("http://localhost:3001/add.php");
+			AddUser addUsr = PageFactory.initElements(driver, AddUser.class);
+			addUsr.addUser("bhuvanesh", "12345");
+			
 			driver.get("http://localhost:3001");
-
 			LoginPage page = PageFactory.initElements(driver, LoginPage.class);
 			page.login("bhuvanesh", "12345");
 			actual = page.isLoginSuccess();
@@ -34,7 +38,6 @@ public class TestCases {
 		try {
 			driver = new DriverSupplier().getChromeDriver();
 			driver.get("http://localhost:3001");
-
 			LoginPage page = PageFactory.initElements(driver, LoginPage.class);
 			page.login("bhuvanesh1", "12345");
 			actual = page.isLoginSuccess();
@@ -44,7 +47,7 @@ public class TestCases {
 				driver.quit();
 		}
 
-		Assert.assertEquals(actual, true);
+		Assert.assertEquals(actual, false);
 	}
 
 }

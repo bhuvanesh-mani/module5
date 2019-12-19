@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverSupplier {
 	
@@ -11,6 +12,8 @@ public class DriverSupplier {
 	
 	public WebDriver getChromeDriver() {
 		System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
-		return new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--no-sandbox");
+		return new ChromeDriver(options);
 	}
 }
