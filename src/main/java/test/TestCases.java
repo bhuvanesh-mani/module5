@@ -22,13 +22,14 @@ public class TestCases {
 			LoginPage page = PageFactory.initElements(driver, LoginPage.class);
 			page.login("bhuvanesh", "12345");
 			actual = page.isLoginSuccess();
+			Assert.assertEquals(actual, true);
 		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail(e.getMessage());
 		} finally {
 			if (driver != null)
 				driver.quit();
 		}
-
-		Assert.assertEquals(actual, true);
 	}
 
 	@Test
@@ -41,13 +42,16 @@ public class TestCases {
 			LoginPage page = PageFactory.initElements(driver, LoginPage.class);
 			page.login("bhuvanesh1", "12345");
 			actual = page.isLoginSuccess();
+			Assert.assertEquals(actual, false);
 		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail(e.getMessage());
 		} finally {
 			if (driver != null)
 				driver.quit();
 		}
 
-		Assert.assertEquals(actual, false);
+		
 	}
 
 }
