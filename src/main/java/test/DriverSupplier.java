@@ -14,6 +14,7 @@ public class DriverSupplier {
 		System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--no-sandbox");
+		options.addArguments("--disable-dev-shm-usage");
 		return new ChromeDriver(options);
 	}
 }
